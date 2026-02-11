@@ -18,6 +18,8 @@ for ENGINE in "$@"; do
   echo "Container engine: ${ENGINE}, Test count: ${TEST_COUNT}"
   echo "========================================"
 
+  ./scripts/setup/${ENGINE}.sh
+
   for ((i=1; i<=TEST_COUNT; i++)); do
     echo "🔹 [${ENGINE}] ${i}/${TEST_COUNT} test in progress..."
      ./scripts/run.sh "$ENGINE" rt_test ./dockerfiles/rt_test ~/rt/test/container/results/"$ENGINE" 1000000 rt_test.sh
