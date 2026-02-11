@@ -17,14 +17,14 @@ PREEMPT_RT
 ```
 If the RT flag is not present, real-time behavior validation will not be meaningful.
 
-#### CPU Isolation - Kernel parameter update
+#### CPU Isolation(cpu3) - Kernel parameter update
 - Ubuntu
 ```
 sudo vi /etc/default/grub
 ```
 ```
 # ... change line below
-GRUB_CMDLINE_LINUX_DEFAULT="quiet splash threadirqs isolcpus=3 nohz_full=3 rcu_nocbs=3 irqaffinity=0-2"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash threadirqs isolcpus=3 nohz_full=3 rcu_nocbs=3 irqaffinity=0-2 threadirqs"
 # ...
 ```
 - Raspberrypi
@@ -32,7 +32,7 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet splash threadirqs isolcpus=3 nohz_full=3 rcu_n
 sudo vi /boot/firmware/cmdline.txt
 ```
 ```
-# ... change line as below (cpu3 isolation)
+# ... change line as below
 console=serial0,115200 dwc_otg.lpm_enable=0 console=tty1 root=LABEL=writable rootfstype=ext4 rootwait fixrtc quiet splash isolcpus=3 nohz_full=3 rcu_nocbs=3 irqaffinity=0-2 threadirqs
 ```
 
