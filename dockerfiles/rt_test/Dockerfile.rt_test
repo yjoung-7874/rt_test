@@ -1,0 +1,28 @@
+FROM ubuntu:jammy
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Use Kakao mirror and install necessary packages
+RUN sed -i 's@archive.ubuntu.com@mirror.kakao.com@g' /etc/apt/sources.list \
+    && apt update \
+    && apt install -y sudo build-essential git wget cmake vim curl gnupg2 lsb-release \
+                          libglfw3-dev libudev-dev openssh-server \
+    && apt install -y bash bash-completion libreadline-dev libncurses5-dev \
+    && apt install -y libzmq3-dev libmodbus-dev x11-apps libyaml-cpp-dev \
+    && apt install -y locales \
+    && locale-gen en_US en_US.UTF-8 \
+    && update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+
+RUN apt update \
+    && apt install -y libgtk2.0-dev libglib2.0-dev libatk1.0-dev libcairo2-dev \
+                      libpango1.0-dev libharfbuzz-dev libfontconfig1-dev libfreetype6-dev
+
+RUN apt update \
+    && apt install -y rt-tests gnuplot util-linux procps sudo
+
+RUN apt install -y libssl-dev python3-dev python3-pip \
+    && apt clean
+
+WORKDIR /devenv
+
+# CMD ["/bin/bash", "-c", "source /root/.bashrc"]
