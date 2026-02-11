@@ -15,7 +15,8 @@ uname -a
 ```
 PREEMPT_RT
 ```
-If the RT flag is not present, real-time behavior validation will not be meaningful.
+If the RT flag is not present, real-time behavior validation will not be meaningful.  
+For raspberry pi rt kernel, go to the github repository([ros-realtime](https://github.com/ros-realtime/ros-realtime-rpi4-image)).
 
 #### CPU Isolation(cpu3) - Kernel parameter update
 - Ubuntu
