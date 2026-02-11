@@ -17,6 +17,25 @@ PREEMPT_RT
 ```
 If the RT flag is not present, real-time behavior validation will not be meaningful.
 
+#### CPU Isolation - Kernel parameter update
+- Ubuntu
+```
+sudo vi /etc/default/grub
+```
+```
+# ... change line below
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash threadirqs isolcpus=3 nohz_full=3 rcu_nocbs=3 irqaffinity=0-2"
+# ...
+```
+- Raspberrypi
+```
+sudo vi /boot/firmware/cmdline.txt
+```
+```
+# ... change line as below (cpu3 isolation)
+console=serial0,115200 dwc_otg.lpm_enable=0 console=tty1 root=LABEL=writable rootfstype=ext4 rootwait fixrtc quiet splash isolcpus=3 nohz_full=3 rcu_nocbs=3 irqaffinity=0-2 threadirqs
+```
+
 ### 1.2 Container Engine
 At least one of the following must be installed:
 - Docker
