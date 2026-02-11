@@ -53,7 +53,8 @@ podman --version
 
 ## 2. Project Structure
 ```
-.
+host (test realtime setup on host OS)
+container
 ├── dockerfiles
 │   └── rt_test
 │       └── Dockerfile.rt_test
@@ -61,6 +62,9 @@ podman --version
 │   ├── env
 │   │   └── env_build.sh
 │   ├── run.sh
+│   └── setup
+│       ├── docker.sh  # install docker
+│       └── podman.sh  # install podman
 │   └── test
 │       ├── entry
 │       │   └── rt_test.sh
