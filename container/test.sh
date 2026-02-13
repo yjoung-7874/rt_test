@@ -22,7 +22,7 @@ for ENGINE in "$@"; do
 
   for ((i=1; i<=TEST_COUNT; i++)); do
     echo "🔹 [${ENGINE}] ${i}/${TEST_COUNT} test in progress..."
-     ./scripts/run.sh "$ENGINE" rt_test ./dockerfiles/rt_test ~/rt/test/container/results/"$ENGINE" 1000000 rt_test.sh
+     ./scripts/run.sh "$ENGINE" rt_test ./dockerfiles/rt_test ~/rt/test/container/results/"$ENGINE" 1000000 rt_test.sh 0 1 2 3
 
     if [[ $? -eq 0 ]]; then
       echo "[${ENGINE}] ${i} th test done"
