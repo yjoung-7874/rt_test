@@ -28,13 +28,23 @@ sudo vi /etc/default/grub
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash threadirqs isolcpus=3 nohz_full=3 rcu_nocbs=3 irqaffinity=0-2 threadirqs"
 # ...
 ```
-- Raspberrypi
+- Raspberrypi  
+1. Update Kernel parameter
 ```
 sudo vi /boot/firmware/cmdline.txt
 ```
 ```
 # ... change line as below
 console=serial0,115200 dwc_otg.lpm_enable=0 console=tty1 root=LABEL=writable rootfstype=ext4 rootwait fixrtc quiet splash isolcpus=3 nohz_full=3 rcu_nocbs=3 irqaffinity=0-2 threadirqs
+```
+2. Set rt priority for user
+```
+sudo vi /etc/security/limits.d/20-ubuntu-rt.conf
+```
+```
+# change context as below
+*          -       rtprio          99
+*          -       memlock         unlimited
 ```
 
 ### 1.2 Container Engine
